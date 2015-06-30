@@ -1,17 +1,48 @@
 package com.blakestiller.groupdine;
 
+import android.app.Application;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void calculate(View view){
+        // Hide Numpad onClick - when the button is pressed
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
+        // get all the user input from the EditText fields
+        EditText total   = (EditText)findViewById(R.id.editText2);
+        EditText people   = (EditText)findViewById(R.id.editText);
+        EditText tip   = (EditText)findViewById(R.id.editText3);
+        EditText each   = (EditText)findViewById(R.id.editText4);
+                // Convert all user input to Double
+                double totalVar = Double.parseDouble(total.getText().toString());
+                double peopleVar = Double.parseDouble(people.getText().toString());
+                double tipVar = Double.parseDouble(tip.getText().toString());
+                // Calculate total * tip + total / people
+                double calc = (totalVar * (tipVar/1000)) + totalVar / peopleVar - 1;
+                // Round it up to 2 decimal points
+                String EachPay = String.format("%.2f", calc);
+
+                // Show what everyone pays in the EditText field
+                each.setText(EachPay);
     }
 
     @Override
