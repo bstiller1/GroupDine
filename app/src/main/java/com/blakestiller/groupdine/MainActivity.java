@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
                 float peopleVar = Float.parseFloat(people.getText().toString());
                 float tipVar = Float.parseFloat(tip.getText().toString());
                 // Calculate total * tip + total / people
-                float calc = (totalVar * (tipVar/1000)) + totalVar / peopleVar - 1;
+                float calc = (totalVar * (tipVar/100) + totalVar) / peopleVar;
                 // Round it up to 2 decimal points
                 String EachPay = String.format("%.2f", calc);
 
                 // Show what everyone pays in the EditText field
-                each.setText(EachPay);
+                each.setText("$"+EachPay);
     }
 
     @Override
