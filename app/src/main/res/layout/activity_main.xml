@@ -19,7 +19,7 @@
         android:layout_below="@+id/editText2"
         android:layout_toRightOf="@+id/textView3"
         android:layout_marginLeft="34dp"
-        android:inputType="numberDecimal" />
+        android:inputType="number" />
 
     <TextView
         android:layout_width="wrap_content"

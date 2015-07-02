@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
         EditText people   = (EditText)findViewById(R.id.editText);
         EditText tip   = (EditText)findViewById(R.id.editText3);
         EditText each   = (EditText)findViewById(R.id.editText4);
-                // Convert all user input to Double
-                double totalVar = Double.parseDouble(total.getText().toString());
-                double peopleVar = Double.parseDouble(people.getText().toString());
-                double tipVar = Double.parseDouble(tip.getText().toString());
+                // Convert all user input to Float
+                float totalVar = Float.parseFloat(total.getText().toString());
+                float peopleVar = Float.parseFloat(people.getText().toString());
+                float tipVar = Float.parseFloat(tip.getText().toString());
                 // Calculate total * tip + total / people
-                double calc = (totalVar * (tipVar/1000)) + totalVar / peopleVar - 1;
+                float calc = (totalVar * (tipVar/1000)) + totalVar / peopleVar - 1;
                 // Round it up to 2 decimal points
                 String EachPay = String.format("%.2f", calc);
 
