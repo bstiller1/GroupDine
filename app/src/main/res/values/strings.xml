@@ -1,6 +1,10 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="ActionButtonStyle">
+        <item name="android:minWidth">0dip</item>
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:paddingRight">0dip</item>
+    </style>
     <string name="app_name">GroupDine</string>
-
     <string name="info">Calculate Total with Tip</string>
     <string name="action_settings">Settings</string>
     <string name="total">Total:</string>
@@ -8,4 +12,6 @@
     <string name="tip">Tip:</string>
     <string name="split">Split</string>
     <string name="each">Each Pays:</string>
+    <string name="about">About</string>
+    <string name="help">Help</string>
 </resources>

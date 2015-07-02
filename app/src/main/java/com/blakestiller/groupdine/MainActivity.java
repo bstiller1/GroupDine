@@ -1,16 +1,17 @@
 package com.blakestiller.groupdine;
 
-import android.app.Application;
 import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
         // get all the user input from the EditText fields
-        EditText total   = (EditText)findViewById(R.id.editText2);
-        EditText people   = (EditText)findViewById(R.id.editText);
+        EditText total   = (EditText)findViewById(R.id.editText1);
+        EditText people   = (EditText)findViewById(R.id.editText2);
         EditText tip   = (EditText)findViewById(R.id.editText3);
         EditText each   = (EditText)findViewById(R.id.editText4);
                 // Convert all user input to Float
@@ -49,21 +50,28 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        // ActionBar set to show Home if on a different View or Fragment
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        // Icon on ActionBar with Title
+        actionBar.setIcon(R.drawable.fishplate);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.about:
+                // Show Toast Message when user touches About
+                Toast.makeText(this, "GroupDine v1.11 Meal Splitting app\n\rblake@stilleradt.com",
+                        Toast.LENGTH_LONG).show();
+                return (true);
+            // Go to Help Documents on the Web.
+            case R.id.help:
+String url = "http://blakestiller.com/formdata.php?Help=There%20will%20be%20help%20documents%20here.";
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                return (true);
         }
-
-        return super.onOptionsItemSelected(item);
+        return (super.onOptionsItemSelected(item));
     }
 }
